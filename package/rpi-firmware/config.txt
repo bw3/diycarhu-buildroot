@@ -4,17 +4,30 @@
 # See http://buildroot.org/manual.html#rootfs-custom
 # and http://elinux.org/RPiconfig for a description of config.txt syntax
 
+#TEST
+
 kernel=zImage
 
-# To use an external initramfs file
-#initramfs rootfs.cpio.gz
-
-# Disable overscan assuming the display supports displaying the full resolution
-# If the text shown on the screen disappears off the edge, comment this out
 disable_overscan=1
 
-# How much memory in MB to assign to the GPU on Pi models having
-# 256, 512 or 1024 MB total memory
-gpu_mem_256=100
-gpu_mem_512=100
-gpu_mem_1024=100
+gpu_mem=300
+
+disable_splash=1
+
+# Overclock the SD Card from 50 to 100MHz
+# This can only be done with at least a UHS Class 1 card
+dtoverlay=sdtweak,overclock_50=100
+ 
+boot_delay=0
+
+# Overclock the raspberry pi. This voids its warranty. Make sure you have a good power supply.
+#force_turbo=1
+
+dtparam=spi=on
+dtoverlay=reset-cs
+dtoverlay=i2c6,pins_22_23=true,baudrate=400000
+dtoverlay=uart2
+dtoverlay=uart3,ctsrts=0   
+dtoverlay=i2s-slave 
+dtoverlay=disable-bt
+

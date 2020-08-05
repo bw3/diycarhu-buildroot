@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ "$#" -ne 1 ] || ! [ -f "$1" ]; then
+  echo "Usage: $0 avrhexfile" >&2
+  exit 1
+fi
+avrdude -c linuxspi -P /dev/spidev0.1 -p m328p -U lfuse:w:0xee:m -U hfuse:w:0xd9:m -U efuse:w:0x05:m -U flash:w:$1:i

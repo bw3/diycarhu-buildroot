@@ -1,0 +1,9 @@
+[Unit]
+Description=carui
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/CarUI
+
+[Install]
+WantedBy=basic.target

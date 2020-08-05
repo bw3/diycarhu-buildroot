@@ -58,7 +58,9 @@ endif
 define RPI_FIRMWARE_INSTALL_IMAGES_CMDS
 	$(INSTALL) -D -m 0644 package/rpi-firmware/config.txt $(BINARIES_DIR)/rpi-firmware/config.txt
 	$(INSTALL) -D -m 0644 package/rpi-firmware/cmdline.txt $(BINARIES_DIR)/rpi-firmware/cmdline.txt
-	$(RPI_FIRMWARE_INSTALL_BOOT)
+	$(INSTALL) -D -m 0644 package/rpi-firmware/overlays/i2s-slave.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/i2s-slave.dtbo
+    $(INSTALL) -D -m 0644 package/rpi-firmware/overlays/reset-cs.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/reset-cs.dtbo
+    $(RPI_FIRMWARE_INSTALL_BOOT)
 	$(RPI_FIRMWARE_INSTALL_DTB)
 	$(RPI_FIRMWARE_INSTALL_DTB_OVERLAYS)
 endef

@@ -1,0 +1,5 @@
+disable getty@
+disable systemd-console-getty 
+enable systemd-timesyncd
+disable systemd-resolved
+enable carui
