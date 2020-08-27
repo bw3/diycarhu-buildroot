@@ -30,4 +30,4 @@ dtoverlay=uart2
 dtoverlay=uart3,ctsrts=0   
 dtoverlay=i2s-slave 
 dtoverlay=disable-bt
-
+dtoverlay=vc4-fkms-v3d
