@@ -1,0 +1,11 @@
+[Unit]
+Description=osmscout-server
+
+[Service]
+Type=simple
+Environment="QT_QPA_PLATFORM=offscreen" "XDG_CONFIG_HOME=/root/.config" "HOME=/root" "USER=root"
+WorkingDirectory=/root/
+ExecStart=/usr/bin/osmscout-server
+
+[Install]
+WantedBy=basic.target

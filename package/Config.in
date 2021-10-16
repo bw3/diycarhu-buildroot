@@ -2413,6 +2413,12 @@ menu "Text editors and viewers"
 	source "package/nano/Config.in"
 	source "package/uemacs/Config.in"
 	source "package/vim/Config.in"
+    source "package/osm-scout-server/Config.in"
+    source "package/libvalhalla/Config.in"
+    source "package/libosmscout/Config.in"
+    source "package/libmarisa/Config.in"
+    source "package/kyotocabinet/Config.in"
+    source "package/libpostal/Config.in"
     source "package/carui/Config.in"
 endmenu
 

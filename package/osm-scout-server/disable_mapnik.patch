@@ -1,0 +1,14 @@
+--- osm-scout-server-1.17.0/osmscout-server.pro	2020-07-24 15:01:26.000000000 -0400
++++ osmscout-server.pro	2020-09-12 16:13:20.295779813 -0400
+@@ -27,11 +27,6 @@
+     CONFIG += scout_console
+ }
+ 
+-# selection of backends
+-!disable_mapnik {
+-    CONFIG += use_mapnik
+-}
+-
+ !disable_osmscout {
+     CONFIG += use_osmscout
+ }

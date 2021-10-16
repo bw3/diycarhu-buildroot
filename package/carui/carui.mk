@@ -10,6 +10,6 @@ CARUI_SITE = /home/brad/Projects/car_ui
 CARUI_INSTALL_STAGING = YES
 CARUI_INSTALL_TARGET = YES
 CARUI_CONF_OPTS = -DBUILD_DEMOS=ON 
-CARUI_DEPENDENCIES = qt5imageformats qt5location qt5quickcontrols qt5base qt5quickcontrols2  
+CARUI_DEPENDENCIES = qt5imageformats qt5location qt5quickcontrols qt5base qt5quickcontrols2 libmpdclient
 
 $(eval $(cmake-package))

@@ -1,0 +1,5 @@
+config BR2_PACKAGE_OSM_SCOUT_SERVER
+    bool "osm-scout-server"
+    select BR2_PACKAGE_QT5
+    select BR2_PACKAGE_QT5TOOLS
+    depends on BR2_GCC_ENABLE_OPENMP

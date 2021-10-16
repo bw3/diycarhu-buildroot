@@ -1,0 +1,4 @@
+load-module module-alsa-card device_id=Dual
+load-module module-native-protocol-unix
+load-module module-bluetooth-discover
+load-module module-bluetooth-policy

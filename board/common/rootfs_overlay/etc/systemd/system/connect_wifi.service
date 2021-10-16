@@ -1,0 +1,13 @@
+[Unit]
+Description=connect-wifi
+Wants=NetworkManager
+After=NetworkManager
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sleep 30
+#ExecStart=/usr/bin/nmcli dev wifi connect <ssid> password '<password>'
+
+[Install]
+WantedBy=basic.target
+

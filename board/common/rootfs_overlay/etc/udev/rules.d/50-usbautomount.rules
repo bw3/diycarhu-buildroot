@@ -1,1 +1,2 @@
-ACTION=="add", KERNEL=="sd[a-z][0-9]", RUN{program}+="/usr/bin/systemd-mount --no-block --automount=yes --collect $devnode /media"
+ACTION=="add", KERNEL=="sda[3-9]", RUN{program}+="/usr/bin/systemd-mount --no-block --automount=no --options=errors=continue --collect $devnode"
+ACTION=="add", KERNEL=="sd[b-z][1-9]", RUN{program}+="/usr/bin/systemd-mount --no-block --automount=no --options=errors=continue --collect $devnode"

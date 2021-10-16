@@ -23,11 +23,13 @@ boot_delay=0
 # Overclock the raspberry pi. This voids its warranty. Make sure you have a good power supply.
 #force_turbo=1
 
+hdmi_ignore_edid_audio=1
+
 dtparam=spi=on
 dtoverlay=reset-cs
 dtoverlay=i2c6,pins_22_23=true,baudrate=400000
 dtoverlay=uart2
 dtoverlay=uart3,ctsrts=0   
 dtoverlay=i2s-slave 
-dtoverlay=disable-bt
-dtoverlay=vc4-fkms-v3d
+dtoverlay=vc4-kms-v3d-pi4
+dtoverlay=mcp2515-can0-8mhz

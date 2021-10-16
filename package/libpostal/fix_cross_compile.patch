@@ -1,0 +1,72 @@
+diff -pruN libpostal-v1.0.0/configure.ac libpostal-v1.0.0.changed/configure.ac
+--- libpostal-v1.0.0/configure.ac	2017-04-07 17:40:27.000000000 -0400
++++ libpostal-v1.0.0.changed/configure.ac	2020-09-12 15:33:45.438494216 -0400
+@@ -19,11 +19,7 @@ AC_CONFIG_HEADERS([config.h])
+ AC_PROG_CC_C99
+ AC_PROG_INSTALL
+ 
+-LDFLAGS="$LDFLAGS -L/usr/local/lib"
+-
+-# Checks for libraries.
+-AC_SEARCH_LIBS([log],
+-  [m],,[AC_MSG_ERROR([Could not find math library])])
++LDFLAGS="$LDFLAGS -lm"
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+@@ -61,20 +57,6 @@ AC_CHECK_PROG([FOUND_GSHUF], [gshuf], [y
+ AS_IF([test "x$FOUND_SHUF" = xyes],  [AC_DEFINE([HAVE_SHUF], [1], [shuf available])])
+ AS_IF([test "x$FOUND_GSHUF" = xyes],  [AC_DEFINE([HAVE_GSHUF], [1], [gshuf available])])
+ 
+-# ------------------------------------------------------------------
+-# Checks for SSE2 build
+-# ------------------------------------------------------------------
+-AC_ARG_ENABLE([sse2],
+-    AS_HELP_STRING(
+-        [--disable-sse2],
+-        [disable SSE2 optimization routines]
+-        )
+-    )
+-
+-AS_IF([test "x$enable_sse2" != "xno"], [
+-    CFLAGS="-mfpmath=sse -msse2 -DUSE_SSE ${CFLAGS}"
+-])
+-
+ AC_CHECK_HEADER(cblas.h, [AX_CBLAS])
+ 
+ AC_ARG_ENABLE([data-download],
+diff -pruN libpostal-v1.0.0/libpostal.pc.in libpostal-v1.0.0.changed/libpostal.pc.in
+--- libpostal-v1.0.0/libpostal.pc.in	2017-04-07 17:40:27.000000000 -0400
++++ libpostal-v1.0.0.changed/libpostal.pc.in	2020-09-12 14:53:03.597999952 -0400
+@@ -1,5 +1,5 @@
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
++prefix=${pc_sysrootdir}@prefix@
++exec_prefix=${pc_sysrootdir}@exec_prefix@
+ libdir=@libdir@
+ includedir=@includedir@
+ 
+diff -pruN libpostal-v1.0.0/src/Makefile.am libpostal-v1.0.0.changed/src/Makefile.am
+--- libpostal-v1.0.0/src/Makefile.am	2017-04-07 17:40:27.000000000 -0400
++++ libpostal-v1.0.0.changed/src/Makefile.am	2020-09-12 14:53:26.524761599 -0400
+@@ -5,7 +5,7 @@ CFLAGS_O0 = $(CFLAGS_BASE) -O0
+ CFLAGS_O1 = $(CFLAGS_BASE) -O1
+ CFLAGS_O2 = $(CFLAGS_BASE) -O2
+ CFLAGS_O3 = $(CFLAGS_BASE) -O3
+-DEFAULT_INCLUDES = -I.. -I/usr/local/include
++DEFAULT_INCLUDES = -I.. 
+ 
+ # Wonky but have to be able to override the user's optimization level to compile the scanner
+ # as it takes an unreasonably long time to compile with the optimizer on.
+diff -pruN libpostal-v1.0.0/test/Makefile.am libpostal-v1.0.0.changed/test/Makefile.am
+--- libpostal-v1.0.0/test/Makefile.am	2017-04-07 17:40:27.000000000 -0400
++++ libpostal-v1.0.0.changed/test/Makefile.am	2020-09-12 15:32:29.814824810 -0400
+@@ -3,7 +3,7 @@ CFLAGS_O0 = $(CFLAGS_BASE) -O0
+ CFLAGS_O1 = $(CFLAGS_BASE) -O1
+ CFLAGS_O2 = $(CFLAGS_BASE) -O2
+ CFLAGS_O3 = $(CFLAGS_BASE) -O3
+-DEFAULT_INCLUDES = -I.. -I/usr/local/include
++DEFAULT_INCLUDES = -I.. 
+ 
+ CFLAGS = $(CFLAGS_BASE)
+ 

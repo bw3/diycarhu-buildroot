@@ -3,3 +3,4 @@ disable systemd-console-getty
 enable systemd-timesyncd
 disable systemd-resolved
 enable carui
+enable connect_wifi

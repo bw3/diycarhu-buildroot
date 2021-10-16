@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-RPI_FIRMWARE_VERSION = 5574077183389cd4c65077ba18b59144ed6ccd6d
+RPI_FIRMWARE_VERSION = 2b41f509710d99758a5b8efa88d95dd0e9169c0a
 RPI_FIRMWARE_SITE = $(call github,raspberrypi,firmware,$(RPI_FIRMWARE_VERSION))
 RPI_FIRMWARE_LICENSE = BSD-3-Clause
 RPI_FIRMWARE_LICENSE_FILES = boot/LICENCE.broadcom
@@ -60,6 +60,7 @@ define RPI_FIRMWARE_INSTALL_IMAGES_CMDS
 	$(INSTALL) -D -m 0644 package/rpi-firmware/cmdline.txt $(BINARIES_DIR)/rpi-firmware/cmdline.txt
 	$(INSTALL) -D -m 0644 package/rpi-firmware/overlays/i2s-slave.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/i2s-slave.dtbo
     $(INSTALL) -D -m 0644 package/rpi-firmware/overlays/reset-cs.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/reset-cs.dtbo
+    $(INSTALL) -D -m 0644 package/rpi-firmware/overlays/mcp2515-can0-8mhz-overlay.dtbo $(BINARIES_DIR)/rpi-firmware/overlays/mcp2515-can0-8mhz-overlay.dtbo
     $(RPI_FIRMWARE_INSTALL_BOOT)
 	$(RPI_FIRMWARE_INSTALL_DTB)
 	$(RPI_FIRMWARE_INSTALL_DTB_OVERLAYS)
