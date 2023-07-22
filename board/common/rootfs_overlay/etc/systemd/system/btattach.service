@@ -6,8 +6,10 @@ After=dev-ttyAMA0.device
 
 [Service]
 Type=simple
-#ExecStart=btattach -B /dev/ttyAMA0 -P bcm -S 921600 -N
-ExecStart=/usr/bin/hciattach -n /dev/ttyAMA0 bcm43xx 921600 noflow -
+#ExecStart=btattach -B /dev/ttyAMA0 -P bcm -S 921600
+ExecStart=/usr/bin/hciattach -n /dev/ttyAMA0 bcm43xx 921600 flow -
+Restart=on-failure
+RestartSec=500ms
 
 [Install]
 WantedBy=multi-user.target
